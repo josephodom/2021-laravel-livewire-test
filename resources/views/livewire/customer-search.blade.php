@@ -12,12 +12,12 @@
         <tbody>
             @foreach ($customers as $customer)
             <tr>
-                <td>{{ $customer->first_name }}</td>
-                <td>{{ $customer->last_name }}</td>
-                <td>{{ $customer->address }}</td>
-                <td>{{ $customer->phone_number }}</td>
-                <td>{{ $customer->company }}</td>
-                <td>{{ $customer->email }}</td>
+                <td>{!! $columnHighlight($customer->first_name) !!}</td>
+                <td>{!! $columnHighlight($customer->last_name) !!}</td>
+                <td>{!! $columnHighlight($customer->address) !!}</td>
+                <td>{!! $columnHighlight($customer->phone_number) !!}</td>
+                <td>{!! $columnHighlight($customer->company) !!}</td>
+                <td>{!! $columnHighlight($customer->email) !!}</td>
             </tr>
             @endforeach
         </tbody>

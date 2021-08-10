@@ -27,7 +27,7 @@ class CustomerSearch extends Component
     {
         if(!empty($this->searchStr) && is_string($this->searchStr))
         {
-            $searchStrLike = '%' . str_replace(' ', '%', $this->searchStr) . '%';
+            $searchStrLike = '%' . preg_replace('/[^a-zA-Z]+/', '%', $this->searchStr) . '%';
             
             $this->query->where(function($query) use ($searchStrLike)
             {
@@ -47,10 +47,23 @@ class CustomerSearch extends Component
     {
         $this->search();
         
+        $searchStr = htmlentities($this->searchStr);
+        
         $customers = $this->query->get();
         
         return view('livewire.customer-search', [
             'customers' => $customers,
+            'columnHighlight' => function($data) use ($searchStr)
+            {
+                $data = htmlentities($data);
+                
+                if(empty($searchStr))
+                {
+                    return $data;
+                }
+                
+                return str_ireplace($searchStr, '<strong>' . $searchStr . '</strong>', $data);
+            },
         ]);
     }
 }
