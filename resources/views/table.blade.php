@@ -14,7 +14,7 @@
     
     <div class="card">
         <div class="card-body">
-            <livewire:counter />
+            <livewire:customer-search />
         </div><!-- .card-body -->
     </div><!-- .card -->
 </main>
