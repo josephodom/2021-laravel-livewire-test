@@ -23,5 +23,5 @@
         </tbody>
     </table>
     
-    <input type="text" class="form-control" placeholder="Search" wire:model.debounce.500ms="searchStr">
+    <input type="text" class="form-control" placeholder="Search" wire:model.debounce.200ms="searchStr">
 </div>
